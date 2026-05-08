@@ -1,67 +1,84 @@
-# Getting started
+# Newsletters – Frontend Test
 
-Hello there, you are a new recruit in our frontend team at Les Echos, and your first task is to implement our newsletter page.
+## 🧠 Overview
 
-You can find the design on our [figma](https://www.figma.com/file/u1hoAP9FOa1FHbBgkE346o/Entretient-Dev-2024?type=design&node-id=1-309&mode=design)
+This project implements a newsletters listing page based on a provided design and dataset.
 
-# Disclaimer
+The goal was to focus on:
 
-Our evaluation focuses on your problem-solving approach and mindset, observing how you tackle challenges and prioritize tasks.
+- clean architecture
+- server-side rendering (SSR) with Next.js
+- clear separation of concerns (data / business logic / UI)
+- responsive and accessible UI
 
-During the interview, explain your decisions and how you'd approach unfinished tasks with you had more time.
+---
 
-It's your thought process and strategy, rather than completion, that we're interested in.
+## ⚙️ Tech Stack
 
-Please do code as you were already a part of our frontend team, it is essential to us.
+- Next.js (App Router)
+- React
+- TypeScript
+- CSS (no external UI library)
 
-You have to use NextJS, wether it is the latest version (app router), or if you don't feel comfortable with it, use the pages router.
+---
 
-# What is your mission ?
+## 🏗️ Architecture
 
-## Styling
+The project is structured to separate responsibilities:
 
-Regardless of point 1 and 2, the page should be responsive.
+- `data/` → data fetching (mocked async)
+- `services/` → business rules (access, CTA, grouping)
+- `components/` → UI components
+- `types/` → TypeScript types
 
-1. Implement the styling using what you like to use (chakra-ui, material-ui or something else)
-2. Implement the styling yourself, using the library of your choice (we are using styled-components and pandaCSS for instance)
+---
 
-:warning: We are not asking for a pixel perfect copy of the figma, we just wanted to gave you a direction on where to go, it does not have to be the exact same thing really, surprise us :warning:
+## 🔁 Data Flow
 
-## Features
+1. Data is fetched server-side using an async function
+2. Newsletters are grouped by `site`
+3. Access rules are applied based on user subscriptions
+4. CTA is computed:
+   - "S'inscrire" if accessible
+   - "S'abonner" otherwise
 
-The current user will be representated by 3 different mock (`USER_WITH_ONE_SUBSCRIPTION`, `USER_WITH_MULTIPLE_SUBSCRIPTION`, `USER_WITHOUT_SUBSCRIPTION`), you can find these at `src/mocks/user.ts`.
+---
 
-What you need to look at is the `subscriptions` key, it represent the subscriptions that the user currently have active.
+## 🖥️ Rendering
 
-:warning: The app should be working with all these 3 types of profile in mind. :warning:
+The page uses **Server-Side Rendering (SSR)**:
 
-## Implement a list of newsletters, grouped by site.
+- no client-side data fetching
+- no unnecessary hydration
+- better performance and simplicity
 
-You can find mocks of the items in `src/mocks/newsletters.ts`, you have to display the list of all the newsletters, but grouped by the `site` key.
+---
 
-## The CTA must be different regarding the user's status
+## 🎨 Styling
 
-In every newsletter object, you have a key `subscriptions`, which is an array of strings, it represents the right needed to access this newsletter.
+- Global CSS with a component-based naming convention
+- No UI library was used to keep the implementation lightweight
+- Focus on layout, readability and responsiveness
 
-If the field is an empty array, it means the newsletter can be accessed by everyone, otherwise, the user should have at least of the right listed in the array.
+---
 
-The label of the CTA (call to action) will be `S'inscrire` if the user has access to it, otherwise `S'abonner`
+## 🧪 Testing
 
-## Everything should be typed
+- business logic (`newsletter access`)
 
-Everything has to be typed with typescript, show us what you can do !
+---
 
-## The newsletter should come from a fetching function
+## 🚀 Getting Started
 
-Even if we don't provide an API to call, you have to simulate the fetching.
-Also, the app should work in SSR.
+```bash
+npm install
+npm run dev
 
-# Time
 
-Take around 4 hours to do this test, we really respect your time and don't want you to spend days on this.
 
-# Final word
+## 🤖 Use of AI
 
-Good luck and again, please do this as you were already an developer in our team.
+AI tools were used as a support during the development process to explore alternatives and speed up implementation.
 
-If you have any question feel free to contact us and we will quickly respond
+I made the final decisions regarding architecture, data flow and UI structure, with a focus on simplicity, readability and maintainability.
+```
