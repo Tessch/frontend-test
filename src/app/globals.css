@@ -1,10 +1,27 @@
-body {
-  margin: 0;
+@import "../styles/components.css";
+
+:root {
+  --color-text: #222222;
+  --color-muted: #4f4f4f;
+  --color-border: #dddddd;
+  --color-brand: #c40018;
+  --color-brand-dark: #a90014;
+  --color-page: #ffffff;
+  --color-card: #ffffff;
+  --color-intro: #f4f4f4;
 }
 
-.header-bg {
-  background-color: #ffffff;
-  box-shadow: 1px 6px 8px 1px rgba(151, 143, 143, 0.59);
-  -webkit-box-shadow: 1px 6px 8px 1px rgba(151, 143, 143, 0.59);
-  -moz-box-shadow: 1px 6px 8px 1px rgba(151, 143, 143, 0.59);
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--color-page);
+  color: var(--color-text);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+button {
+  font: inherit;
 }
